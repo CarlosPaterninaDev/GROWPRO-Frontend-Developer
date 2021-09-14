@@ -1,7 +1,17 @@
-console.log('asd');
+const arrayNumberValidator = require('./utils');
 
-const myFun = (array) => {
+/**
+ * @description Funcion para calcular el scoreTotal a partir de una secuencia de valores numericos
+ * @param {*} array
+ * @returns totalScore: number
+ */
+const totalScore = (array = []) => {
   let points = 0;
+
+  if (arrayNumberValidator(array)) {
+    console.log('El arreglo debe contener valores numericos');
+    return null;
+  }
 
   array.forEach((element) => {
     if (element === 5) {
@@ -16,13 +26,36 @@ const myFun = (array) => {
   return points;
 };
 
-const a = myFun([1, 2, 3, 4, 5]);
-const b = myFun([17, 19, 21]);
-const c = myFun([5, 5, 5]);
+const totalScoreTest1 = totalScore([1, 2, 3, 4, 5]);
+const totalScoreTest2 = totalScore([17, 19, 21]);
+const totalScoreTest3 = totalScore([5, 5, 5]);
+const totalScoreErrorTest = totalScore(['as']);
 
-console.log(a, b, c);
+console.log({
+  totalScoreTest1,
+  totalScoreTest2,
+  totalScoreTest3,
+  totalScoreErrorTest,
+});
 
+console.table({
+  totalScoreTest1,
+  totalScoreTest2,
+  totalScoreTest3,
+  totalScoreErrorTest,
+});
+
+/**
+ * @description Funcion para calcular el tribonacci a partir de una secuencia de valores numericos y una cantidad maxima de datos
+ * @param {*} array = arrayNumeros
+ * @returns totalScore: number
+ */
 const tribonacci = (array = [], n) => {
+  if (arrayNumberValidator(array)) {
+    console.log('El arreglo debe contener valores numericos');
+    return null;
+  }
+
   const sequence = [...array];
 
   if (n === 0) {
@@ -45,13 +78,24 @@ const tribonacci = (array = [], n) => {
   return sequence.slice(0, n);
 };
 
-const tri = tribonacci([0, 0, 1], 9);
-const tri2 = tribonacci([1, 1, 1], 5);
-const tri3 = tribonacci([1, 2, 3], 2);
-const tri4 = tribonacci([1, 2, 3], 0);
+const tribonacciTest1 = tribonacci([0, 0, 1], 9);
+const tribonacciTest2 = tribonacci([1, 1, 1], 5);
+const tribonacciTest3 = tribonacci([1, 2, 3], 2);
+const tribonacciTest4 = tribonacci([1, 2, 3], 0);
+const tribonacciTestError = tribonacci([1, 'a', 3], 0);
 
-console.log(tri);
-console.log(tri2);
+console.log({
+  tribonacciTest1,
+  tribonacciTest2,
+  tribonacciTest3,
+  tribonacciTest4,
+  tribonacciTestError,
+});
 
-console.log(tri3);
-console.log(tri4);
+console.table({
+  tribonacciTest1,
+  tribonacciTest2,
+  tribonacciTest3,
+  tribonacciTest4,
+  tribonacciTestError,
+});
