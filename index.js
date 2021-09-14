@@ -48,10 +48,10 @@ console.table({
 /**
  * @description Funcion para calcular el tribonacci a partir de una secuencia de valores numericos y una cantidad maxima de datos
  * @param {*} array  array Numeros
- *  @param {*} n  cantidad de elementos de la secuencia a mostrar
+ * @param {*} nSequence  cantidad de elementos de la secuencia a mostrar
  * @returns array: number[] | null
  */
-const tribonacci = (array = [], n) => {
+const tribonacci = (array = [], nSequence) => {
   if (arrayNumberValidator(array)) {
     console.log('El arreglo debe contener valores numericos');
     return null;
@@ -59,24 +59,24 @@ const tribonacci = (array = [], n) => {
 
   const sequence = [...array];
 
-  if (n === 0) {
+  if (nSequence === 0) {
     return [0];
   }
 
-  for (let index = 0; index < n; index++) {
-    let a = 0;
+  for (let index = 0; index < nSequence; index++) {
+    let currentValueSequence = 0;
 
-    array.forEach((e) => {
-      a += e;
+    array.forEach((element) => {
+      currentValueSequence += element;
     });
 
     array.shift();
-    array.push(a);
+    array.push(currentValueSequence);
 
-    sequence.push(a);
+    sequence.push(currentValueSequence);
   }
 
-  return sequence.slice(0, n);
+  return sequence.slice(0, nSequence);
 };
 
 const tribonacciTest1 = tribonacci([0, 0, 1], 9);
