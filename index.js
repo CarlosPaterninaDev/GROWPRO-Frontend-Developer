@@ -3,7 +3,7 @@ const arrayNumberValidator = require('./utils');
 /**
  * @description Funcion para calcular el scoreTotal a partir de una secuencia de valores numericos
  * @param {*} array
- * @returns totalScore: number
+ * @returns totalScore: number | null
  */
 const totalScore = (array = []) => {
   let points = 0;
@@ -47,8 +47,9 @@ console.table({
 
 /**
  * @description Funcion para calcular el tribonacci a partir de una secuencia de valores numericos y una cantidad maxima de datos
- * @param {*} array = arrayNumeros
- * @returns totalScore: number
+ * @param {*} array  array Numeros
+ *  @param {*} n  cantidad de elementos de la secuencia a mostrar
+ * @returns array: number[] | null
  */
 const tribonacci = (array = [], n) => {
   if (arrayNumberValidator(array)) {
